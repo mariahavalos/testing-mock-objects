@@ -6,7 +6,8 @@ class MyInput extends Component {
         super(props);
 
         this.state = {
-            value: ''
+            value: '',
+            simpleValue: ''
           };
         
         this.newAddress=this.newAddress.bind(this)
@@ -15,19 +16,24 @@ class MyInput extends Component {
 
     newAddress () {
         this.props.addAddress(this.state.value);
+        this.setState ({
+            simpleValue: '',
+            value: ''
+        })
     }
 
     updateInputValue(val) {
         this.setState({
-          value: val.target.value
+          value: <div key={val.target.value} style={{marginTop: '1vh'}}>{val.target.value}</div>,
+          simpleValue: val.target.value
         });
       }
 
     render() {
         return (
             <div>
-            <Input placeholder="username" onChange={val => this.updateInputValue(val)}/>
-            <div><Button outline color="primary" onClick={this.newAddress}>primary</Button>{' '}</div>
+            <Input style={{marginLeft: '25vw', width: '50vw'}} value={this.state.simpleValue} placeholder="username" onChange={val => this.updateInputValue(val)}/>
+            <div style={{margin: '5vh'}}><Button outline color="primary" onClick={this.newAddress}>primary</Button>{' '}</div>
         </div>
         );
     }

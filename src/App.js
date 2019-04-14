@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MyInput from '../src/components/input'
 import TextDisplay from '../src/components/text-display'
+import MyProgress from '../src/components/progress-bar'
 import './App.css';
 
 class App extends Component {
@@ -8,31 +9,30 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      addressBook: []
+      friendsList: []
     }
 
     this.addAddress=this.addAddress.bind(this)
   }
 
-  addAddress(address) {
-    let addressBook = this.state.addressBook
-    addressBook.push(address)
+  addAddress(friend) {
+    let friendsList = this.state.friendsList
+    friendsList.push(friend)
 
     this.setState({
-      addressBook
+      friendsList
     })
-
-    console.log(this.state.addressBook)
   }
 
   render() {
-    let addressBook = []
-    let address = ''
+    let friendsList = []
+    let friend = ''
 
     return (
       <div className="App">
        <MyInput addAddress={this.addAddress}/>
-       <TextDisplay address={address} addressBook={addressBook}></TextDisplay>
+       <MyProgress friendsList={this.state.friendsList}/>
+       <TextDisplay friendsList={this.state.friendsList}/>
       </div>
     );
   }
