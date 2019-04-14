@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import MyInput from '../src/components/input'
+import TextDisplay from '../src/components/text-display'
 import './App.css';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      addressBook: []
+    }
+
+    this.addAddress=this.addAddress.bind(this)
+  }
+
+  addAddress(address) {
+    let addressBook = this.state.addressBook
+    addressBook.push(address)
+
+    this.setState({
+      addressBook
+    })
+
+    console.log(this.state.addressBook)
+  }
+
   render() {
+    let addressBook = []
+    let address = ''
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <MyInput addAddress={this.addAddress}/>
+       <TextDisplay address={address} addressBook={addressBook}></TextDisplay>
       </div>
     );
   }
