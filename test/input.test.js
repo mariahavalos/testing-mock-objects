@@ -28,6 +28,23 @@ it ('is able to add new friends to list', () => {
     expect(input.prop('value')).toEqual('friend1');
 });
 
+//mock myinput and addFriend functions to validate that input field clears after submission
+it ('should clear the input after adding the value', () => {
+    const addFriend = () => {
+        return true;
+    }
+
+    let wrapper = shallow(<MyInput addFriend={addFriend} friendsList={friendsList}/>);
+    wrapper.instance().newFriend();
+    wrapper.update()
+    wrapper.find('#button').simulate('click');
+    expect(handleClickSpy).toBeCalled();
+
+    const input = wrapper.find('#input');
+    expect(input.prop('value')).toEqual('');
+})
+
+
 //mock myinput with friends list larger than the max allowed. make sure disabled property is true
 it ('should be disabled after 5 friends are added', () => {
     const friendsList = ['a', 'b', 'c', 'd', 'e', 'f']

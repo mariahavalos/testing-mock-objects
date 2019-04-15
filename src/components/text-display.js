@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class TextDisplay extends Component {
   render() {
     return (
-        <div>{this.props.friendsList}</div>
+        <div id="text-display">{this.props.friendsList}</div>
     );
   }
 }

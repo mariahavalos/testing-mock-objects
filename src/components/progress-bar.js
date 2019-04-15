@@ -13,7 +13,7 @@ class MyProgress extends Component {
 
     render() {
         return (
-            <div style={{margin: '10vh'}}>
+            <div id='progress-bar' style={{margin: '10vh'}}>
                 Your friend list is currently {this.getValue()}% full.
                 <Progress value={this.getValue()} />
             </div>
