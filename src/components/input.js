@@ -40,7 +40,7 @@ class MyInput extends Component {
         return (
             <div>
             <Input id='input' disabled={this.isDisabled()} style={{marginLeft: '25vw', width: '50vw'}} value={this.state.simpleValue} placeholder="username" onChange={val => this.updateInputValue(val)}/>
-            <div style={{margin: '5vh'}}><Button id='button' disabled={this.isDisabled()} color="primary" onClick={this.newFriend}>primary</Button>{' '}</div>
+            <div style={{marginTop: '5vh', marginLeft: '40vw'}}><Button id='button' disabled={this.isDisabled()} color="primary" onClick={this.newFriend}>primary</Button>{' '}</div>
         </div>
         );
     }
