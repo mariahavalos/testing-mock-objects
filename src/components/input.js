@@ -10,16 +10,23 @@ class MyInput extends Component {
             simpleValue: ''
           };
         
-        this.newAddress=this.newAddress.bind(this)
+        this.newFriend=this.newFriend.bind(this)
         this.updateInputValue=this.updateInputValue.bind(this)
+        this.isDisabled=this.isDisabled.bind(this)
     }
 
-    newAddress () {
-        this.props.addAddress(this.state.value);
-        this.setState ({
-            simpleValue: '',
-            value: ''
-        })
+    newFriend() {
+        if (this.state.simpleValue !== ''){
+            this.props.addFriend(this.state.value);
+            this.setState ({
+                simpleValue: '',
+                value: ''
+            })
+        }
+    }
+
+    isDisabled() {
+        return this.props.friendsList.length >= 5;
     }
 
     updateInputValue(val) {
@@ -32,8 +39,8 @@ class MyInput extends Component {
     render() {
         return (
             <div>
-            <Input style={{marginLeft: '25vw', width: '50vw'}} value={this.state.simpleValue} placeholder="username" onChange={val => this.updateInputValue(val)}/>
-            <div style={{margin: '5vh'}}><Button outline color="primary" onClick={this.newAddress}>primary</Button>{' '}</div>
+            <Input id='input' disabled={this.isDisabled()} style={{marginLeft: '25vw', width: '50vw'}} value={this.state.simpleValue} placeholder="username" onChange={val => this.updateInputValue(val)}/>
+            <div style={{margin: '5vh'}}><Button id='button' disabled={this.isDisabled()} color="primary" onClick={this.newFriend}>primary</Button>{' '}</div>
         </div>
         );
     }

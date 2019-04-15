@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MyInput from '../src/components/input'
 import TextDisplay from '../src/components/text-display'
 import MyProgress from '../src/components/progress-bar'
-import './App.css';
 
 class App extends Component {
 
@@ -12,10 +11,10 @@ class App extends Component {
       friendsList: []
     }
 
-    this.addAddress=this.addAddress.bind(this)
+    this.addFriend=this.addFriend.bind(this)
   }
 
-  addAddress(friend) {
+  addFriend(friend) {
     let friendsList = this.state.friendsList
     friendsList.push(friend)
 
@@ -25,12 +24,10 @@ class App extends Component {
   }
 
   render() {
-    let friendsList = []
-    let friend = ''
 
     return (
       <div className="App">
-       <MyInput addAddress={this.addAddress}/>
+       <MyInput friendsList={this.state.friendsList} addFriend={this.addFriend}/>
        <MyProgress friendsList={this.state.friendsList}/>
        <TextDisplay friendsList={this.state.friendsList}/>
       </div>
