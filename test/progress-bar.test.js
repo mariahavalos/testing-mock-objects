@@ -13,7 +13,7 @@ it ('should be at the correct value of progress given a friends list', () => {
 
     const progress = wrapper.instance().getValue()
     wrapper.update()
-    expect(progress).toEqual(30);
+    expect(progress).toEqual(60);
 });
 
 it ('should start at 0', () => {
